@@ -1,0 +1,19 @@
+services:
+   hlsproxy:
+    container_name: hlsproxy_arm
+    image: hlsproxy:arm
+    environment:
+      - port=38050
+    ports:
+      - 38050:38050
+    volumes:
+     - ./local.json:/opt/local.json
+    restart: unless-stopped
+    networks:
+      multimedia_network:
+        ipv4_address: 172.50.0.11
+networks:
+  multimedia_network:
+    external: true
+  npm:
+    external: true

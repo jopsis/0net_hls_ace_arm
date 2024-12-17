@@ -1,0 +1,13 @@
+
+services:
+   zeronet:
+    image: 0net:arm64v8
+    container_name: 0net
+    privileged: true
+    ports:
+      - 26552:26552/tcp
+      - 43110:43110/tcp
+    environment:
+      - TZ=Europe/Madrid
+    restart: unless-stopped
+    network_mode: "bridge"

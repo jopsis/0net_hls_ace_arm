@@ -1,0 +1,19 @@
+services:
+  acestream-arm:
+    privileged: true
+    container_name: acestream-arm
+    tmpfs:
+     - /dev/disk/by-id:noexec,rw,size=4k
+    environment:
+     - TZ=Europe/Madrid
+    ports:
+      - '6878:6878'
+      - '6880:6880'
+    image: 'acestream-arm'
+    stdin_open: true
+    tty: true
+    volumes:
+     - ./acestream.conf:/acestream.engine/acestream.conf
+    restart: unless-stopped
+    network_mode: "bridge"
+

@@ -1,0 +1,91 @@
+{
+    "playlists": [
+    ],
+    "SERVER": {
+        "address": "0.0.0.0",
+        "port": 38050,
+        "password": "changemerightnow",
+        "isAllowUsersWithAnyToken": true,
+        "isRestreamer": true
+    },
+    "epg": {
+        "tvGuideUrl": [
+            "disabled:https://iptvx.one/epg/epg.xml.gz",
+            "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/refs/heads/master/guiaiptv.xml"
+        ],
+        "historyDays": 2,
+        "isAddUrlEpgToEXTINF": true
+    },
+    "clients": {
+    },
+    "isCacheInMemory": false,
+    "fastStartChunks": 4,
+    "fastStartChunksWhenPlaylistIsShort": 5,
+    "downloadSlotsAvailable": 4,
+    "maxDownloadSlotsAvailable": 5,
+    "pooler": [
+        {
+            "name": "cbilling",
+            "isEnabled": false,
+            "regex": "^https?://(?:s[0-9][0-9]|no-ru)\\.wsbof\\.com[:0-9]*/s/([a-f0-9]+)(_[0-9])?/.*$",
+            "replace": "",
+            "pool": [
+                "$$",
+                "$$_2",
+                "$$_3"
+            ]
+        },
+        {
+            "name": "gigi.iptv",
+            "isEnabled": false,
+            "regex": "^https?://tv.gigi.iptv.uno(?::80)?/live/([a-zA-Z0-9]+/[a-zA-Z0-9]+)/.*$",
+            "replace": "",
+            "pool": [
+                "$$",
+                "firstToken2/secondToken2"
+            ]
+        },
+        {
+            "name": "iedem.tv",
+            "isEnabled": false,
+            "regex": "^https?://([a-z0-9.]+)/iptv/([a-zA-Z0-9]+)/.*?/(?:index|video)\\.m3u8.*?$",
+            "replace": "",
+            "pool": [
+                "$$ $$",
+                "$$ $$",
+                "DOMAIN TOKEN",
+                "DOMAIN TOKEN"
+            ]
+        },
+        {
+            "name": "glanz",
+            "isEnabled": false,
+            "regex": "^https?://([a-z0-9.]+)/\\d+/(?:index|video|archive)(?:-\\d+-\\d+)?\\.m3u8\\?username=([a-z0-9.]+)&password=([a-zA-Z0-9.]+)&token=([a-f0-9.]+)&ch_id=.*?$",
+            "replace": "",
+            "pool": [
+                "$$ $$ $$ $$",
+                "$$ $$ $$ $$",
+                "$$ $$ $$ $$",
+                "DOMAIN USERNAME PASSWORD TOKEN",
+                "DOMAIN USERNAME PASSWORD TOKEN",
+                "DOMAIN USERNAME PASSWORD TOKEN"
+            ]
+        },
+        {
+            "name": "only4tv",
+            "isEnabled": false,
+            "regex": "^https?://([a-z0-9.]+)/\\d+/(?:index|video|archive)(?:-\\d+-\\d+)?\\.m3u8\\?token=(.*?)$",
+            "replace": "",
+            "pool": [
+                "$$ $$",
+                "$$ $$",
+                "$$ $$",
+                "DOMAIN TOKEN",
+                "DOMAIN TOKEN",
+                "DOMAIN TOKEN"
+            ]
+        }
+    ],
+    "serverName": "",
+    "isHtmlPlayerEnabled": false
+}
